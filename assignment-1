@@ -1,0 +1,37 @@
+-->Docker Run:
+1)Pull and run a Docker image of an Nginx web server.
+  docker pull nginx
+  docker run nginx
+
+2)Run a container with a specific name and assign it a custom network.
+  docker create network my_network
+  docker run --name my_nginx --network my_network nginx
+
+3)Run a container in detached mode (background) and expose ports.
+  docker run -d -p 80:80 nginx
+
+-->Docker Stop:
+1)Stop a running container by its name or ID.
+  docker stop nginx
+
+2)Stop all running containers on your system.
+  docker stop $(docker ps -aq)
+
+3)Gracefully stop a container by sending a stop signal.
+  docker stop -t timeout container-name/id
+
+-->Docker Start:
+1)Start a previously stopped container by its name or ID.
+  docker start nginx
+
+2)Restart a container automatically if it fails.
+  docker run --restart on-failure nginx
+
+-->Port Binding:
+1)Bind a container's port to a specific port on the host machine.
+  docker run -p 8080:80 image-name
+
+2)Bind a container's port to a random port on the host machine.
+  docker run -P image-name
+
+
