@@ -25,9 +25,24 @@
 -->Mount a host directory as a volume:
 
 1)Create a directory on your host machine.
+  $ mkdir docker
+  $ pwd
+    /Users/deepthi/data/test
+
 2)Start a new container and mount the host directory as a volume using the -v
+  $ docker run -it -v /Users/deepthi/data/test:/data nginx /bin/bash 
+
 3)Verify that the container can access and modify files within the mounted volume.
+  $ cd /test
+  $ touch hello1
+  then it should create same file in container(/data) as well
+  
 4)Stop and remove the container, ensuring that the host directory remains intact.
+  exit from the container
+  $ docker stop d1d8b57a4231
+  $ docker remove d1d8b57a4231
+  
+  check /Users/deepthi/data/test -> it will still have hello1 file
 
 -->Backup and restore a volume:
 
