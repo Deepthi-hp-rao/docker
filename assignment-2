@@ -47,6 +47,19 @@
 -->Backup and restore a volume:
 
 1)Create a container and attach a volume to it.
+  $ docker run -d --name my_container image_name
+  $ docker volume create my_volume
+  $ docker run -it -v my_volume:/path/in/container image_name /bin/bash
+
 2)Populate the volume with some data or files.
+  $ touch file1.txt >> echo "hello deepthi"
+
 3)Remove the container and recreate it, or use a new container with the same volume.
+  $ docker stop container_name
+  $ docker remove container_name
+  $ docker run -d --name my_container image_name
+  $ docker run -it -v my_volume:/path/in/container image_name /bin/bash
+
+
 4)Restore the volume's contents from the backup.
+  $ cp -r /path/to/backup_directory/* /path/to/volume_directory
